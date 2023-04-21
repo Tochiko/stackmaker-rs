@@ -1,5 +1,6 @@
 use std::collections::{HashMap, LinkedList};
 use std::io::BufWriter;
+use std::ops::Add;
 use std::str::FromStr;
 use placeholder::render;
 use crate::xyz_file::XyzFile;
@@ -22,13 +23,23 @@ impl PiStack {
 }
 
 impl XyzFile for PiStack {
-    fn to_xyz_string(&self) -> String {
+    // this one solves to a dynamic-like xyz structure
+    /*fn to_xyz_string(&self) -> String {
         let mut result = String::new();
         for molecule in self.molecules.clone() {
             result.push_str(&*molecule.to_xyz_string());
             //result.push_str("\n"); //molecule my molecule
         }
         result
+    }*/
+    fn to_xyz_string(&self) -> String {
+        let mut result = String::new();
+        let mut number_atoms: usize = 0;
+        for molecule in self.molecules.clone() {
+            number_atoms += molecule.atoms.len();
+            result.push_str(&*molecule.to_string());
+        }
+        number_atoms.to_string() + "\n \n" + &*result.to_string()
     }
 }
 

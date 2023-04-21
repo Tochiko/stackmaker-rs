@@ -12,10 +12,10 @@ mod pi_stack;
 
 fn main() -> std::io::Result<()>{
 
-    let data = fs::read_to_string(Path::new("test2.xyz"));
+    let data = fs::read_to_string(Path::new("test.xyz"));
     let data_string = data.unwrap();
     let molecule = Molecule::from(&*data_string);
-    let stackoption = PiStackOption{conformation: 'E', multiply: 10, shift: (3.3, 3.3, 4.)};
+    let stackoption = PiStackOption{conformation: 'E', multiply: 5, shift: (3.3, 3.3, 3.35)};
     let pistack = PiStack::from((&molecule, &stackoption));
     let xyz_string = pistack.to_xyz_string();
 
