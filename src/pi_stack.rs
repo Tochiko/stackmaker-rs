@@ -54,7 +54,7 @@ impl From<(& Molecule, &PiStackOption)> for PiStack  {
                 result.molecules.push_back(Molecule::shift(input.0, shift));
 
                 /*let mut shifted_molecule = Molecule::new();
-                Molecule::shift(input.0, &mut shifted_molecule, (input.1.distance.0, 0., 0.));
+                Molecule::shift(xyz_files.0, &mut shifted_molecule, (xyz_files.1.distance.0, 0., 0.));
                 result.molecules.push_front(&shifted_molecule);*/
             }
         }
