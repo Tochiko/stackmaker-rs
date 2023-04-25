@@ -23,7 +23,8 @@ fn main() {
             let xyz = pistack.to_xyz_string();
 
             let mut output_filename = args[i].clone();
-            output_filename.insert_str(output_filename.find(".").unwrap(), &*format!("{}{}", "_", stackoption.multiply.to_string()));
+            output_filename.insert_str(output_filename.find(".").unwrap(),
+                                       &*format!("{}{}", "_", stackoption.multiply.to_string()+ &*stackoption.conformation.to_string()));
             File::create(Path::new(&format!("{}{}", "./", output_filename)))
                 .unwrap().write_all(xyz.as_bytes()).unwrap();
         }
